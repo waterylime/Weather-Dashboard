@@ -12,13 +12,29 @@
 
 
 <body>
-     <div class="location">
-     <h1 class="location-timezone">Timezone</h1>
-    <p>Icon</p>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="cityInput">Search for a City</label>
+                    <input type="text" id="cityInput">
+                    <button class="search" id="searchCity">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
 </div>
-
-<div class="temp">
+<div class="col-lg-6">
+    <div class="row">
+        <div id="cityView"></div>
+    </div>
+    <div class="row">
+        <div id="forecastView"></div>
+    </div>
+</div>
+</div>
+</div>
+<!-- <div class="temp">
     <div class="degree-section">
     <h2 class="tempDegree">50</h2>
     <span>F</span>
@@ -31,7 +47,7 @@
 </div>
 <div class="day">
 <div class="day">this is the week</div>
-</div>
+</div> -->
 
   <script src='weather.js'></script>
 </body>
