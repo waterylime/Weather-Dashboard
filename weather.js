@@ -17,29 +17,41 @@ $("#searchCity").on("click", (event) => {
     }).then((response) =>{
         console.log(response)
 
-    var cityDiv =$("<div class='city'>");
+    var windSpeed = response.wind.speed;
+    var humidity = response.main.humidity;
     var cityName = response.name;
+    var temperature = response.main.temp;
+    var windSpeed = response.wind.speed;
+    var cityDiv = $("#cityView");
+    console.log("timezone" + response.timezone)
+    console.log("This is the city: " + cityName)
+    console.log("This is the temp: " + temperature)
+    console.log("This is the humidity: " + humidity)
+    console.log("This is the windspeed: " + windSpeed)
     var h1 = $("<h1>").html(cityName + " (" + moment().format("L") + ")" + "<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
     cityDiv.append(h1);
-    var temperature = response.main.temp;
+  
+
     var pTwo = $("<p>").html("Temperature: " + Math.round((temperature - 273.15) * 1.80 + 32) + " ℉");
     cityDiv.append(pTwo);
-    var humidity = response.main.humidity;
+    
+
     var pThree = $("<p>").html("Humidity: " + humidity + " %");
     cityDiv.append(pThree);
-    var windSpeed = response.wind.speed;
+ 
+ 
     var pFour = $("<p>").html("Wind speed: " + windSpeed + " MPH");
     cityDiv.append(pFour);
   
     $("#cityView").prepend(cityDiv);
     
-    })
-    
-    fiveDayForecast(city);
-
     var button = $("<button>").addClass("buttons");
     button.prepend(localStorage.getItem("city"))
     $("#searchHistory").append(button);
+    fiveDayForecast(city);
+    })
+
+    
     
 })
 
@@ -72,4 +84,6 @@ function fiveDayForecast (city) {
         }
     })
 }
+
+
 // });
